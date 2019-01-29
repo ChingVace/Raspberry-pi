@@ -1,0 +1,20 @@
+#连接阿里云RDS数据库
+import requests
+import json
+import MySQLdb
+
+db = MySQLdb.connect(host='阿里云外网地址',
+                      port = 3306,
+                      user = 'dht11_zpj',
+                      passwd = '****',
+                      db = 'dht11')
+cur_db = db.cursor()
+cur_db.execute("insert into table_dht(dht_tem,dht_hum,dht_time) values(%s,%s,%s),value)
+db.commit()
+
+
+
+
+#传感器定时运行命令（putty）
+sudo crontab -e
+*/1****/home/pi/dht11.py
